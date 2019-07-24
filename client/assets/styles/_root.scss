@@ -1,0 +1,196 @@
+@import "variables.scss";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $openSans;
+}
+
+.app__header {
+  position: fixed;
+  top: 0;
+  height: 60px;
+}
+
+.app__hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 60px;
+  width: 100%;
+  height: 400px;
+  background: $lightBlue
+    url("https://cdn2.hubspot.net/hubfs/1709048/podcast/Banner-Podcast-Landing-Page.jpg")
+    no-repeat;
+  background-size: cover;
+
+  .app__hero__content {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 120px;
+  }
+}
+
+.modal__audio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .modal__audio__box {
+    height: 200px;
+    height: 200px;
+    border-radius: 0px 0px 20px 20px;
+    background: #fff;
+    .audio__range {
+      width: 362px;
+      height: 3px;
+    }
+  }
+}
+
+.podcast {
+  max-width: 1040px;
+  margin: 40px auto 0 auto;
+  .podcast__description {
+    display: flex;
+  }
+
+  .podcast__information,
+  .podcast__image {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .podcast__image {
+    position: relative;
+  }
+
+  .podcast__information {
+    width: 100%;
+    max-width: 439.19px;
+    padding: 0 45.8px;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    .podcast__title {
+      margin: 45px 0 10px 0;
+    }
+  }
+
+  .podcast__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .podcast__group.hide {
+      display: none;
+    }
+
+    .podcast__group {
+      width: 100%;
+      display: flex;
+
+      .pocast__box {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 20px 20px 0;
+        width: 100%;
+        max-width: 510px;
+        h4 {
+          width: 100%;
+          max-width: 324px;
+          height: 40px;
+        }
+
+        img {
+          border-radius: 10px 10px 0 0;
+        }
+      }
+
+      .podcast__box__white {
+        height: 180px;
+        border-radius: 0 0 10px 10px;
+        background: #fff;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+        padding: 0 20px;
+      }
+    }
+  }
+  .show__more {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 17.5px;
+    background: #fff;
+    border: 1px solid #707070;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .app__hero {
+    height: 600px;
+    background-position: bottom;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .app__hero .app__hero__content {
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+  }
+
+  .app__hero .app__hero__content .app__hero__content__logo {
+    width: 100%;
+  }
+
+  .podcast__description {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .podcast .podcast__information,
+  .podcast .podcast__image {
+    width: 100%;
+    max-width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  .podcast .podcast__image img {
+    width: 100%;
+  }
+
+  .podcast__container {
+    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+
+  .podcast__group {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  br {
+    display: none;
+  }
+}
