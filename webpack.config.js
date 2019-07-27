@@ -59,7 +59,8 @@ const client = {
     contentBase: path.join(__dirname, 'client/build'),
     proxy: {
       '/api': 'http://localhost:8080'
-    }
+    },
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({

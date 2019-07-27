@@ -3,7 +3,8 @@ const elements = {
   podcast: document.querySelector('.podcast'),
   podcastGroup: document.querySelectorAll('.podcast__group'),
   showMore: document.querySelector('.show__more'),
-  img: document.querySelectorAll('img')
+  img: document.querySelectorAll('img'),
+  modal: document.querySelector('.modal__audio')
 };
 
 class Audio {
@@ -13,6 +14,7 @@ class Audio {
     this.cover = cover;
   }
 }
+
 class Podcast {
   constructor(tracks = []) {
     this.tracks = tracks;
@@ -47,25 +49,59 @@ const scrollDown = (elementFrom, elementTo) => {
   return false;
 };
 
-const playAudio = (image) => {
-  const playing = [];
+const addProgressBar = (audio) => {
+  const range = document.querySelector('.audio__range');
+  range.setAttribute('max', audio.duration / 60);
+  range.setAttribute('value', audio.currentTime);
+}
+
+const openModal = (image) => {
   image.forEach((img) => {
-    const audio = img.getAttribute('data-audio');
-    if (audio) {
-      img.addEventListener('click', () => {
-        playing.unshift(audio);
-        const element = document.querySelector(`.${playing[0]}`);
-        if (element.paused) {
-          element.play();
-        } else {
-          element.pause();
-        }
-      });
-    }
+    img.addEventListener('click', () => {
+      addAudio(img)
+    });
   });
 };
 
+const playPodcast = (audio) => {
+  if(audio.paused) {
+    audio.play();
+  } else {
+    audio.paused();
+  }
+} 
+
+const addAudio = (image) => {
+  const className = image.getAttribute('data-audio');
+  elements.modal.insertAdjacentHTML('afterend', `<img
+  src="${image.src}"
+  alt="${image.alt}"
+/>
+<div class="modal__audio__box">
+  <input  
+    type="range"
+    class="audio__range"
+    name="audio__range"
+    min="0"
+    max="0"
+    value="0"
+  />
+  <audio controls 
+    class="audio ${className}"
+  >
+    <source
+      src="${image.getAttribute('data-link')}"
+    />
+  </audio>
+</div>`);
+
+const audio = document.querySelector(`.${className}`);
+playPodcast(audio)
+addProgressBar(audio)
+}
+
+
 scrollDown(elements.scrollDownButton, elements.podcast);
 showMore(elements.podcastGroup, elements.showMore);
-playAudio(elements.img);
+openModal(elements.img);
 export { scrollDown, Audio, Podcast };
